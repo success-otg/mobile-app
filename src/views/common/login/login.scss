@@ -1,0 +1,112 @@
+.login{
+  .l-top{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: .3rem;
+    font-size: .4rem;
+    color: #03c3b8;
+    .icon{
+      width: .6rem;
+      height: .6rem;
+    }
+  }
+  .main{
+    width: 80%;
+    margin: 1.2rem auto;
+    h1{
+      font-size: .6rem;
+      font-weight: normal;
+      color: #313133;
+      margin-bottom: 1.2rem;
+    }
+    .m-content{
+      display: flex;
+      align-items: center;
+      padding-bottom: .2rem;
+      border-bottom: 1px solid #666;
+      font-size: .35rem;
+      input{
+        border: none;
+        outline: none;
+        font-size: .5rem;
+        background-color: #fff;
+      }
+    }
+    p{
+      margin: 0;
+      padding: .1rem 0;
+      font-size: .25rem;
+      letter-spacing: 2px;
+      color: #ccc;
+    }
+    .btn{
+      width: 90%;
+      height: .8rem;
+      line-height: .8rem;
+      font-size: .3rem;
+      border-radius: .4rem;
+      margin: .3rem auto;
+      background-color: #03c3b8;
+    }
+    .b-code{
+      font-size: .3rem;
+      color: #555;
+    }
+  }
+  .code{
+    input{
+      width: 100%;
+      height: .6rem;
+      margin: .2rem 0;
+      padding: .2rem 0;
+      background-color: #fff;
+      border: none;
+      border-bottom: 1px solid #666;
+      outline: none;
+      font-size: .3rem;
+    }
+    .c-btn{
+      background-color: #03c3b8;
+      height: .8rem;
+      margin: .5rem 0;
+      border-radius: .4rem;
+      line-height: .8rem;
+      font-size: .3rem;
+      color: #fff;
+    }
+    .m-foot{
+      display: flex;
+      justify-content: space-between;
+      font-size: .3rem;
+      color: #666;
+    }
+  }
+  .l-foot{
+    position: absolute;
+    bottom: .5rem;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    .logo{
+      display: flex;
+      justify-content: space-around;
+      padding: 0 .3rem;
+      margin-bottom: .8rem;
+      .icon{
+        width: .8rem;
+        height: .8rem;
+        border: 1px solid #ccc;
+        padding: .2rem;
+        border-radius: 50%;
+      }
+    }
+    p{
+      font-size: .27rem;
+      color: #cccccc;
+      span{
+        color: #03c3b8;
+      }
+    }
+  }
+}
