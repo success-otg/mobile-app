@@ -6,6 +6,7 @@ import ReactSVG from 'react-svg'
 
 class Mine extends React.Component {
   render() {
+    console.log(this)
     return (
       <div className={'mine'}>
         <div className={'header'}>
@@ -17,7 +18,7 @@ class Mine extends React.Component {
               src={require('../../svg/message.svg')}/></span>
           </div>
             <div className={'middle'} onClick={this.goLogin}>
-              <Link to={'/login'}>
+              <Link to={{pathname:'/login', state: {from: this.props.location.pathname}}} >
                 <ReactSVG src={require('../../svg/girl.svg')}/>
                 <span>请点击登录</span>
               </Link>
