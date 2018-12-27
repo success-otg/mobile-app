@@ -1,46 +1,53 @@
-.login{
-  .l-top{
+.login {
+  .l-top {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: .3rem;
     font-size: .4rem;
     color: #03c3b8;
-    .icon{
+
+    .icon {
       width: .6rem;
       height: .6rem;
     }
   }
-  .main{
+
+  .main {
     width: 80%;
     margin: 1.2rem auto;
-    h1{
+
+    h1 {
       font-size: .6rem;
       font-weight: normal;
       color: #313133;
       margin-bottom: 1.2rem;
     }
-    .m-content{
+
+    .m-content {
       display: flex;
       align-items: center;
       padding-bottom: .2rem;
       border-bottom: 1px solid #666;
       font-size: .35rem;
-      input{
+
+      input {
         border: none;
         outline: none;
         font-size: .5rem;
         background-color: #fff;
       }
     }
-    p{
+
+    p {
       margin: 0;
       padding: .1rem 0;
       font-size: .25rem;
       letter-spacing: 2px;
       color: #ccc;
     }
-    .btn{
+
+    .btn {
       width: 90%;
       height: .8rem;
       line-height: .8rem;
@@ -49,13 +56,15 @@
       margin: .3rem auto;
       background-color: #03c3b8;
     }
-    .b-code{
+
+    .b-code {
       font-size: .3rem;
       color: #555;
     }
   }
-  .code{
-    input{
+
+  .code {
+    input {
       width: 100%;
       height: .6rem;
       margin: .2rem 0;
@@ -66,7 +75,8 @@
       outline: none;
       font-size: .3rem;
     }
-    .c-btn{
+
+    .c-btn {
       background-color: #03c3b8;
       height: .8rem;
       margin: .5rem 0;
@@ -75,25 +85,45 @@
       font-size: .3rem;
       color: #fff;
     }
-    .m-foot{
+
+    .m-foot {
       display: flex;
       justify-content: space-between;
       font-size: .3rem;
       color: #666;
     }
+    .c-code{
+      position: relative;
+      .c-img{
+        position: absolute;
+        right: 0;
+        bottom: .4rem;
+        display: flex;
+        img{
+          width: 1.6rem;
+          height: .6rem;
+        }
+        .fresh{
+          width: .6rem;
+        }
+      }
+    }
   }
-  .l-foot{
+
+  .l-foot {
     /*position: absolute;
     bottom: .5rem;
     left: 0;*/
     width: 100%;
     text-align: center;
-    .logo{
+
+    .logo {
       display: flex;
       justify-content: space-around;
       padding: 0 .3rem;
       margin-bottom: .8rem;
-      .icon{
+
+      .icon {
         width: .8rem;
         height: .8rem;
         border: 1px solid #ccc;
@@ -101,12 +131,61 @@
         border-radius: 50%;
       }
     }
-    p{
+
+    p {
       font-size: .27rem;
       color: #cccccc;
-      span{
+
+      span {
         color: #03c3b8;
       }
     }
+  }
+
+}
+
+.am-modal-transparent {
+  width: 3.5rem !important;
+  padding: .4rem !important;
+
+  .am-modal-title {
+    font-size: .24rem;
+  }
+
+  .am-modal-input-container{
+    width: 2.2rem !important;
+    margin: .2rem auto !important;
+    .am-modal-input{
+      width: 100% !important;
+      height: .4rem !important;
+      input{
+        width: 100%;
+        height: .4rem !important;
+        line-height: .4rem !important;
+        font-size: .30rem !important;
+        font-weight: bold;
+        color: #666;
+        text-align: center;
+      }
+    }
+  }
+
+  .am-modal-button{
+    font-size: .24rem;
+  }
+}
+
+.am-toast-text{
+  height: .6rem;
+  line-height: .6rem !important;
+  font-size: .24rem !important;
+}
+
+.auth-code{
+  display: flex;
+  justify-content: center;
+  .fresh{
+    width: .6rem;
+    height: .6rem;
   }
 }

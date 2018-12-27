@@ -1,9 +1,10 @@
 import React from 'react'
 import './login.scss'
 import ReactSVG from 'react-svg'
-import {Button} from "antd-mobile"
 import {Link} from "react-router-dom"
 import FetchUrl from '../../../utils/fetch'
+import {Modal, Button, Toast} from "antd-mobile"
+import {getCode} from "../../../api"
 
 class Login extends React.Component {
   constructor(props) {
@@ -12,10 +13,24 @@ class Login extends React.Component {
       userInfo: {
         phone: '18668137940'
       },
-      isMessage: true
+      isMessage: true,
+      captchasImg: null
     }
     this.toggleWay = this.toggleWay.bind(this)
     this.goBack = this.goBack.bind(this)
+    this.getcaptchas = this.getcaptchas.bind(this)
+  }
+
+  componentWillMount() {
+    this.getcaptchas()
+  }
+
+  async getcaptchas() {
+    let res = await getCode()
+    console.log(res)
+    this.setState({
+      captchasImg: res.code
+    })
   }
 
   toggleWay() {
@@ -30,9 +45,12 @@ class Login extends React.Component {
 
   diy() {
     let fetchUrl = new FetchUrl()
-    fetchUrl.init().setUrl('http://localhost:9999/admin/login').setMethod('POST').setOvertime(30 * 1000).setHeader({'Accept': 'application/json', 'Content-Type': 'application/json'}).dofetch().then(data=>{
+    fetchUrl.init().setUrl('http://localhost:9999/admin/login').setMethod('POST').setOvertime(30 * 1000).setHeader({
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    }).dofetch().then(data => {
       console.log(data)
-    }).catch(err=>{
+    }).catch(err => {
       console.log(err)
     })
   }
@@ -43,6 +61,7 @@ class Login extends React.Component {
       from = this.props.location.state.from
     }
     const urlTo = from || '/home'
+    const prompt = Modal.prompt
     return (
       <div className={'login'}>
         <div className={'l-top'}>
@@ -59,14 +78,34 @@ class Login extends React.Component {
           </div>
           <div style={{display: this.state.isMessage ? '' : 'none'}}>
             <p>未注册的手机号验证后自动创建美团账户</p>
-            <Button className={'btn'} type={'primary'}>获取短信验证码</Button>
+            <Button className={'btn'} type={'primary'}
+                    onClick={() => prompt('验证码', <div className={'auth-code'}><img src={this.state.captchasImg}
+                                                                                   alt={'yzm'}/><img
+                      onClick={this.getcaptchas} className={'fresh'} src={require('../../../svg/fresh.svg')}
+                      alt={'fresh'}/></div>, [
+                      {text: '取消'},
+                      {
+                        text: '确定', onPress: () => {
+                          Toast.info('我没有钱买短信接口！穷！！！', 2, null, false)
+                        }
+                      }
+                    ])}>获取短信验证码</Button>
             <span className={'b-code'} onClick={this.toggleWay}>密码登录</span>
           </div>
           <div className={'code'} style={{display: this.state.isMessage ? 'none' : ''}}>
             <input placeholder={'请输入密码'}/>
+            <div className={'c-code'}>
+              <input placeholder={'请输入验证码'}/>
+              <div className={'c-img'}>
+                <img src={this.state.captchasImg} alt={'yzm'}/>
+                <img
+                  onClick={this.getcaptchas} className={'fresh'} src={require('../../../svg/fresh.svg')} alt={'fresh'}/>
+              </div>
+
+            </div>
             <Button className={'c-btn'} onClick={this.diy}>登录</Button>
             <div className={'m-foot'}>
-              <span onClick={this.toggleWay}>验证码登录</span>
+              <span onClick={this.toggleWay}>短信验证码登录</span>
               <span>忘记密码</span>
             </div>
           </div>

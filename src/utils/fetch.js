@@ -1,4 +1,5 @@
 //fetch网络请求简单封装，支持超时入口  https://blog.csdn.net/tinsine/article/details/78908709
+const baseUrl = 'http://localhost:9999'
 class FetchUtil {
   //初始化工具类
   init(){
@@ -15,7 +16,7 @@ class FetchUtil {
   }
   //设置请求URL
   setUrl(url){
-    this.url = url;
+    this.url = baseUrl + url;
     return this;
   }
   //设置请求方式，默认为GET请求（POST,PUT,DELETE）
@@ -115,19 +116,19 @@ class FetchUtil {
       }
     ).then(
       (response) => {
-        if('json' == this.return_type){
-          return response.json();
-        }else if('text' == this.return_type){
+        if(this.return_type ==='json' ){
+          return response.json()
+        }else if(this.return_type ==='text'){
           return response.text();
-        }else if('blob' == this.return_type){
+        }else if(this.return_type ==='blob'){
           return response.blob();
-        }else if('formData' == this.return_type){
+        }else if(this.return_type ==='formData'){
           return response.formData();
-        }else if('arrayBuffer' == this.return_type){
+        }else if(this.return_type ==='arrayBuffer'){
           return response.arrayBuffer();
         }
       }
     );
   }
 }
-export default FetchUtil
+export default  FetchUtil
