@@ -4,21 +4,25 @@ import ReactSVG from 'react-svg'
 import {Link} from "react-router-dom"
 import FetchUrl from '../../../utils/fetch'
 import {Modal, Button, Toast} from "antd-mobile"
-import {getCode} from "../../../api"
+import {getCode, accountLogin} from "../../../api"
 
 class Login extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      userInfo: {
-        phone: '18668137940'
-      },
+      username: '',
+      password: '',
+      code: '',
+      userInfo: null,
       isMessage: true,
       captchasImg: null
     }
     this.toggleWay = this.toggleWay.bind(this)
-    this.goBack = this.goBack.bind(this)
     this.getcaptchas = this.getcaptchas.bind(this)
+    this.doLogin = this.doLogin.bind(this)
+    this.handleChange1 = this.handleChange1.bind(this)
+    this.handleChange2 = this.handleChange2.bind(this)
+    this.handleChange3 = this.handleChange3.bind(this)
   }
 
   componentWillMount() {
@@ -27,7 +31,7 @@ class Login extends React.Component {
 
   async getcaptchas() {
     let res = await getCode()
-    console.log(res)
+    // console.log(res)
     this.setState({
       captchasImg: res.code
     })
@@ -39,20 +43,39 @@ class Login extends React.Component {
     })
   }
 
-  goBack() {
-
+  handleChange1(e) {
+    this.setState({
+      username: e.target.value
+    })
   }
 
-  diy() {
-    let fetchUrl = new FetchUrl()
-    fetchUrl.init().setUrl('http://localhost:9999/admin/login').setMethod('POST').setOvertime(30 * 1000).setHeader({
-      'Accept': 'application/json',
-      'Content-Type': 'application/json'
-    }).dofetch().then(data => {
-      console.log(data)
-    }).catch(err => {
-      console.log(err)
+  handleChange2(e) {
+    this.setState({
+      password: e.target.value
     })
+  }
+
+  handleChange3(e) {
+    this.setState({
+      code: e.target.value
+    })
+  }
+
+  async doLogin() {
+    if (!this.state.username){
+      Toast.info('请输入手机号/用户名/邮箱', 1, null, false)
+      return ''
+    }else if (!this.state.password){
+      Toast.info('请输入密码', 1, null, false)
+      return ''
+    } else if (!this.state.code){
+      Toast.info('请输入验证码', 1, null, false)
+      return ''
+    }
+    this.setState({
+      userInfo: await accountLogin(this.state.username,this.state.password, this.state.code)
+    })
+    console.log(this.state.userInfo)
   }
 
   render() {
@@ -73,8 +96,7 @@ class Login extends React.Component {
           <div className={'m-content'}>
             <span>+86</span>
             <span>&nbsp;&nbsp;>&nbsp;&nbsp;</span>
-            <input type={'text'} value={this.state.userInfo.phone} onChange={() => {
-            }}/>
+            <input type={'text'} ref={'username'} onChange={this.handleChange1} value={this.state.username}/>
           </div>
           <div style={{display: this.state.isMessage ? '' : 'none'}}>
             <p>未注册的手机号验证后自动创建美团账户</p>
@@ -93,9 +115,9 @@ class Login extends React.Component {
             <span className={'b-code'} onClick={this.toggleWay}>密码登录</span>
           </div>
           <div className={'code'} style={{display: this.state.isMessage ? 'none' : ''}}>
-            <input placeholder={'请输入密码'}/>
+            <input type={'password'} placeholder={'请输入密码'} onChange={this.handleChange2} value={this.state.password}/>
             <div className={'c-code'}>
-              <input placeholder={'请输入验证码'}/>
+              <input placeholder={'请输入验证码'} onChange={this.handleChange3} value={this.state.code}/>
               <div className={'c-img'}>
                 <img src={this.state.captchasImg} alt={'yzm'}/>
                 <img
@@ -103,7 +125,7 @@ class Login extends React.Component {
               </div>
 
             </div>
-            <Button className={'c-btn'} onClick={this.diy}>登录</Button>
+            <Button className={'c-btn'} onClick={this.doLogin}>登录</Button>
             <div className={'m-foot'}>
               <span onClick={this.toggleWay}>短信验证码登录</span>
               <span>忘记密码</span>

@@ -62,7 +62,7 @@ class FetchUtil {
     return this;
   }
   setCookieOrigin(){
-    this.credentials = 'same-origin';
+    this.credentials = 'include';
     return this;
   }
   setCookieCors(){
