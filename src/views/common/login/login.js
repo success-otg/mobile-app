@@ -2,7 +2,6 @@ import React from 'react'
 import './login.scss'
 import ReactSVG from 'react-svg'
 import {Link} from "react-router-dom"
-import FetchUrl from '../../../utils/fetch'
 import {Modal, Button, Toast} from "antd-mobile"
 import {getCode, accountLogin} from "../../../api"
 
@@ -75,7 +74,7 @@ class Login extends React.Component {
     this.setState({
       userInfo: await accountLogin(this.state.username,this.state.password, this.state.code)
     })
-    console.log(this.state.userInfo)
+    console.log(this.state)
   }
 
   render() {

@@ -8,7 +8,7 @@ class FetchUtil {
     this.headers       = {};
     this.body_type     = 'form';
     this.bodys         = {};
-    this.credentials   = 'omit';
+    this.credentials   = 'include';
     this.return_type   = 'json';
     this.overtime      = 0;
     this.firstThen     = undefined;
@@ -80,8 +80,8 @@ class FetchUtil {
     options.method      = this.method;
     options.credentials = this.credentials;
     options.headers = this.headers;
-    if({} != this.bodys && this.method != 'GET'){
-      if('form' == this.body_type){
+    if({} !== this.bodys && this.method !== 'GET'){
+      if('form' === this.body_type){
         this.setHeader("Content-Type","application/x-www-form-urlencoded;charset=UTF-8");
         let data = '';
         Object.keys(this.bodys).map((index) => {
@@ -89,13 +89,13 @@ class FetchUtil {
           data += `${index}=${param}&`;
         });
         options.body = data;
-      }else if('file' == this.body_type){
+      }else if('file' === this.body_type){
         let data = new FormData();
         Object.keys(this.bodys).map((index) => {
           data.append(index, this.bodys[index]);
         });
         options.body = data;
-      }else if('json' == this.body_type){
+      }else if('json' === this.body_type){
         options.body = JSON.stringify(this.bodys);
       }
     }
