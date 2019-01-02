@@ -1,7 +1,7 @@
 import React from 'react'
 import './login.scss'
 import ReactSVG from 'react-svg'
-import {Link} from "react-router-dom"
+import {Link, withRouter} from "react-router-dom"
 import {Modal, Button, Toast} from "antd-mobile"
 import {getCode, accountLogin} from "../../../api"
 
@@ -12,9 +12,11 @@ class Login extends React.Component {
       username: '',
       password: '',
       code: '',
-      userInfo: null,
+      userInfo: {},
       isMessage: true,
-      captchasImg: null
+      captchasImg: null,
+      loginTo: '/mine',
+      isLogin: false
     }
     this.toggleWay = this.toggleWay.bind(this)
     this.getcaptchas = this.getcaptchas.bind(this)
@@ -74,7 +76,17 @@ class Login extends React.Component {
     this.setState({
       userInfo: await accountLogin(this.state.username,this.state.password, this.state.code)
     })
-    console.log(this.state)
+    console.log(this.state.userInfo.userInfo.user_id)
+    if (!this.state.userInfo.userInfo.user_id){
+      Toast.info('登录失败', 1, null, false)
+      this.getcaptchas()
+    } else {
+      this.setState({
+        isLogin: true
+      })
+        const loginTo = this.props.location.state.from
+      this.props.history.push(loginTo)
+    }
   }
 
   render() {
