@@ -7,6 +7,7 @@ import Order from './views/order/index'
 import Mine from './views/mine/index'
 import Login from './views/common/login/login'
 import Error from './views/common/error/error'
+import Setting from "./views/mine/setting"
 
 class App extends Component {
   render() {
@@ -21,6 +22,7 @@ class App extends Component {
             <Route path={'/mine'} component={Mine}/>
             <Route path={'/login'} component={Login}/>
             <Route path={'/error'} component={Error}/>
+            <Route path={'/setting'} component={Setting}/>
           </Switch>
         </BrowserRouter>
       </div>

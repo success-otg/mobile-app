@@ -1,9 +1,11 @@
 import React from 'react'
 import './login.scss'
 import ReactSVG from 'react-svg'
-import {Link, withRouter} from "react-router-dom"
+import {connect} from 'react-redux'
+import {Link} from "react-router-dom"
 import {Modal, Button, Toast} from "antd-mobile"
 import {getCode, accountLogin} from "../../../api"
+import {Success_Login, is_Login} from '../../../store/actions'
 
 class Login extends React.Component {
   constructor(props) {
@@ -12,11 +14,9 @@ class Login extends React.Component {
       username: '',
       password: '',
       code: '',
-      userInfo: {},
       isMessage: true,
       captchasImg: null,
       loginTo: '/mine',
-      isLogin: false
     }
     this.toggleWay = this.toggleWay.bind(this)
     this.getcaptchas = this.getcaptchas.bind(this)
@@ -73,25 +73,26 @@ class Login extends React.Component {
       Toast.info('请输入验证码', 1, null, false)
       return ''
     }
-    this.setState({
-      userInfo: await accountLogin(this.state.username,this.state.password, this.state.code)
-    })
-    console.log(this.state.userInfo.userInfo.user_id)
-    if (!this.state.userInfo.userInfo.user_id){
+
+    const res = await accountLogin(this.state.username,this.state.password, this.state.code)
+console.log(res)
+   
+    
+    if (!res.userInfo.user_id){
       Toast.info('登录失败', 1, null, false)
       this.getcaptchas()
     } else {
-      this.setState({
-        isLogin: true
-      })
-        const loginTo = this.props.location.state.from
+      console.log(this.props)
+      const loginTo = this.props.location.state.from
       this.props.history.push(loginTo)
-    }
-  }
+      this.props.dispatch(Success_Login(res.userInfo))
+      this.props.dispatch(is_Login(true))
+}
+}
 
-  render() {
-    let from
-    if (this.props.location.state != null) {
+render(){
+let from
+if (this.props.location.state != null) {
       from = this.props.location.state.from
     }
     const urlTo = from || '/home'
@@ -154,5 +155,12 @@ class Login extends React.Component {
     );
   }
 }
+
+const mapStateToProps = (state) => ({
+userInfo: state.userInfo,
+is_Login: state.is_Login
+})
+
+Login = connect(mapStateToProps)(Login)
 
 export default Login

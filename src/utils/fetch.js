@@ -46,6 +46,7 @@ class FetchUtil {
     }else if(typeof name == 'object'){
       Object.keys(name).map((index)=>{
         this.headers[index] = name[index];
+        return ''
       });
     }
     return this;
@@ -57,6 +58,7 @@ class FetchUtil {
     }else if(typeof name == 'object'){
       Object.keys(name).map((index)=>{
         this.bodys[index] = name[index];
+        return ''
       });
     }
     return this;
@@ -87,12 +89,14 @@ class FetchUtil {
         Object.keys(this.bodys).map((index) => {
           let param = encodeURI(this.bodys[index]);
           data += `${index}=${param}&`;
+          return ''
         });
         options.body = data;
       }else if('file' === this.body_type){
         let data = new FormData();
         Object.keys(this.bodys).map((index) => {
           data.append(index, this.bodys[index]);
+          return ''
         });
         options.body = data;
       }else if('json' === this.body_type){
