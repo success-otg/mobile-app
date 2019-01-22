@@ -3,7 +3,7 @@ import localStorage from '../utils/localStorage'
 export const userInfo = (state = {}, action) => {
   switch (action.type) {
     case 'LOGIN_SUCCESS':
-      localStorage.setAge(24 * 60 * 60 * 1000).set('userInfo', action.userInfo)
+      localStorage.setAge(30 * 60 * 1000).set('userInfo', action.userInfo)
       return state = action.userInfo
     default:
       return state

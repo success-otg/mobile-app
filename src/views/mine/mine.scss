@@ -3,10 +3,12 @@
     position: relative;
     //border: 1px solid red;
     overflow: hidden;
+
     .b-top {
       height: 3rem;
       background-color: #26aaae;
     }
+
     .b-bottom {
       width: 140%;
       margin-left: -20%;
@@ -16,7 +18,8 @@
       border-top-left-radius: 60%;
       background-color: #fff;
     }
-    .top{
+
+    .top {
       position: fixed;
       top: 0;
       left: 0;
@@ -26,34 +29,40 @@
       justify-content: space-between;
       box-sizing: border-box;
       background-color: #25aab0;
-      .t-right{
+
+      .t-right {
         width: 18%;
         display: flex;
         justify-content: space-between;
       }
-      .icon{
+
+      .icon {
         width: .5rem;
         height: .5rem;
       }
     }
-    .middle{
+
+    .middle {
       position: absolute;
       top: 1.1rem;
       left: calc(50% - 2.5rem);
       width: 5rem;
       text-align: center;
       font-size: .3rem;
-      .icon{
+
+      .icon {
         width: 1.2rem;
         height: 1.2rem;
         margin-bottom: .1rem;
       }
-      a{
+
+      a {
         color: #000;
         text-decoration: none;
       }
     }
-    .bottom{
+
+    .bottom {
       position: absolute;
       bottom: 0;
       left: 5%;
@@ -63,13 +72,15 @@
       width: 90%;
       border-bottom: 1px solid #ccc;
       padding: .4rem 0;
-      .item{
+
+      .item {
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
         font-size: .25rem;
-        .icon{
+
+        .icon {
           width: .8rem;
           height: .8rem;
           margin-bottom: .2rem;
@@ -79,23 +90,18 @@
   }
 }
 
-.s-header{
-  position: relative;
-  padding: .3rem 0;
-  text-align: center;
-  font-size: .36rem;
-  font-weight: 300;
-  border-bottom: 1px solid #c4c4c5;
-  .icon{
-    position: absolute;
-    top: .3rem;
-    left: .2rem;
-    width: .5rem;
-    height: .5rem;
-  }
+.btn {
+  margin: .5rem .2rem;
+  box-sizing: border-box;
+  outline: none;
+  border: #dedddd;
+  width: calc(100% - .4rem);
+  font-size: .4rem;
+  padding: .2rem;
+  background-color: #fff;
 }
 
-ul{
+ul {
   list-style-type: none;
   margin: 0;
   padding: 0;

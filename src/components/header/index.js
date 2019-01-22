@@ -1,5 +1,6 @@
 import React from 'react'
 import ReactSVG from 'react-svg'
+import './header.scss'
 import {Link} from 'react-router-dom'
 class Header extends React.Component{
   render() {

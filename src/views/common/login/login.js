@@ -32,7 +32,6 @@ class Login extends React.Component {
 
   async getcaptchas() {
     let res = await getCode()
-    // console.log(res)
     this.setState({
       captchasImg: res.code
     })
@@ -75,14 +74,12 @@ class Login extends React.Component {
     }
 
     const res = await accountLogin(this.state.username,this.state.password, this.state.code)
-console.log(res)
-   
+
     
     if (!res.userInfo.user_id){
       Toast.info('登录失败', 1, null, false)
       this.getcaptchas()
     } else {
-      console.log(this.props)
       const loginTo = this.props.location.state.from
       this.props.history.push(loginTo)
       this.props.dispatch(Success_Login(res.userInfo))
