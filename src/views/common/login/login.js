@@ -81,10 +81,12 @@ class Login extends React.Component {
       this.getcaptchas()
     } else {
       const loginTo = this.props.location.state.from
-      this.props.history.push(loginTo)
+      let userInfo = res.userInfo
+      userInfo.avatar = require('../../../svg/default.svg')
       this.props.dispatch(Success_Login(res.userInfo))
       this.props.dispatch(is_Login(true))
-}
+      this.props.history.push(loginTo)
+    }
 }
 
 render(){

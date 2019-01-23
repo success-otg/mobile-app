@@ -35,7 +35,7 @@ class Mine extends React.Component {
           </div>
           <div style={{display: this.props.is_Login?'block':'none'}} className={'middle'} >
             <Link to={{pathname:'', state: {from: this.props.location.pathname}}} >
-              <ReactSVG src={require('../../svg/default.svg')}/>
+              <ReactSVG src={this.props.userInfo.avatar}/>
             </Link>
             <p>{this.props.userInfo.username}</p>
           </div>

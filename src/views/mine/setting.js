@@ -24,7 +24,7 @@ class Setting extends React.Component{
 
   render() {
     const list1 = [
-      {name: '个人信息', info: ''},
+      {name: '个人信息', info: '', to: '/infos', from: '/setting'},
       {name: '换绑手机', info: ``},
       {name: '社交账号绑定', info: '绑定/解绑'},
       {name: `登录密码`, info: '修改'},
