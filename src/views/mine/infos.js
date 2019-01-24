@@ -4,6 +4,7 @@ import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import ReactSVG from 'react-svg'
 import {Modal, List, Button} from 'antd-mobile'
+import {updateAvatar} from "../../api"
 
 class Infos extends React.Component{
   constructor(props) {
@@ -25,8 +26,18 @@ class Infos extends React.Component{
       modal: false
     })
   }
-  async uploadImg(){
-    
+  async uploadImg(e){
+    e.preventDefault()
+    const reader = new FileReader()
+    reader.readAsDataURL(e.target.files[0])
+    reader.onloadend = async (ev) => {
+      console.log(ev.target.result)
+      const url = ev.target.result.split(',')[1]
+      const res = await updateAvatar(this.props.userInfo.user_id,{url})
+      console.log(res)
+    }
+
+
   }
   render() {
     const list = [
@@ -49,7 +60,7 @@ class Infos extends React.Component{
         >
           <div style={{height: '1.2rem', fontSize: '.24rem'}}>
             <p>拍照</p>
-            <p style={{position: 'relative'}}>从手机相册选择<input onChange={this.uploadImg()} ref={'imgInput'} type={'file'} style={{position: 'absolute', top: 0,left: 0, zIndex: 10, opacity:0}}/></p>
+            <p style={{position: 'relative'}}>从手机相册选择<input name={'imgForm'} onChange={(e)=>this.uploadImg(e)} ref={'imgInput'} type={'file'} style={{position: 'absolute', top: 0,left: 0, zIndex: 10, opacity:0}}/></p>
           </div>
         </Modal>
       </div>

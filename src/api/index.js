@@ -10,3 +10,6 @@ export const accountLogin = (username, password, captcha_code)=>fetch.init().set
 
 //登出
 export const signout = () => fetch.init().setUrl('/users/signout').dofetch()
+
+//上传图片
+export const updateAvatar = (user_id,data) => fetch.init().setUrl(`/v1/users/${user_id}/avatar`).setMethod('POST').setBody(data).dofetch()

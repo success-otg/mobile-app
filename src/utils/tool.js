@@ -4,3 +4,4 @@ export const uploadPic = (base64String, suc, fail) => {
   let array = []
 
 }
+
