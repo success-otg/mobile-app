@@ -1,6 +1,6 @@
 import React from 'react'
-import Header from '../../components/header'
-import SettingList from "../../components/setting-list"
+import Header from '../../components/mine/header'
+import SettingList from "../../components/mine/setting-list"
 import './mine.scss'
 import {signout} from "../../api"
 import {Toast} from 'antd-mobile'
@@ -11,13 +11,16 @@ class Setting extends React.Component{
     this.signout = this.signout.bind(this)
   }
 
+
   async signout(){
     localStorage.clear()
 
     const res = await signout()
     if (res.status === 1){
       Toast.info(res.message, 1)
-      this.props.history.push('/login')
+      // this.props.history.push('/login')
+      this.props.history.push({pathname:'/login', state: {from: this.props.location.pathname}})
+
     }
 
   }

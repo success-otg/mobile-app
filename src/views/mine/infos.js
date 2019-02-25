@@ -1,9 +1,9 @@
 import React from 'react'
-import Header from "../../components/header"
+import Header from "../../components/mine/header"
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import ReactSVG from 'react-svg'
-import {Modal, List, Button} from 'antd-mobile'
+import {Modal} from 'antd-mobile'
 import {updateAvatar} from "../../api"
 
 class Infos extends React.Component{

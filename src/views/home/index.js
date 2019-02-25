@@ -1,11 +1,14 @@
 import React from 'react'
-import Foot from '../../components/foot/index'
+import Foot from '../../components/common/foot/index'
+import MainHead from '../../components/home/mainHead'
+import CarouselModel from "../../components/home/carousel"
 
 class Index extends React.Component{
   render() {
     return (
       <div>
-        this is home page
+        <MainHead/>
+        <CarouselModel/>
         <Foot index = {0}/>
       </div>
     );

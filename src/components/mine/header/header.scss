@@ -1,0 +1,16 @@
+.s-header{
+  position: relative;
+  padding: .3rem 0;
+  border-bottom: 1px solid #c4c4c5;
+  background-color: #fff;
+  text-align: center;
+  font-size: .36rem;
+  font-weight: 300;
+  .icon{
+    position: absolute;
+    top: .3rem;
+    left: .2rem;
+    width: .5rem;
+    height: .5rem;
+  }
+}

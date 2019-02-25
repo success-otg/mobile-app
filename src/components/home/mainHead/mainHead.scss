@@ -1,0 +1,113 @@
+.mainHead{
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+  width: 100%;
+  padding: .15rem;
+  color: #fff;
+  //background-color: #5ed4ff;
+  z-index: 10;
+  .icon{
+    width: .5rem;
+    height: .5rem;
+    //border: 1px solid #ccc;
+  }
+  .pos{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    //align-items: center;
+    //border: 1px solid red;
+    font-size: .15rem;
+    a{
+      display: flex;
+      margin-bottom: .05rem;
+      color: #fff;
+      font-size: .2rem;
+      .icon{
+        width: .2rem;
+        height: .2rem;
+        padding-top: .03rem;
+      }
+    }
+    span{
+      font-size: .15rem;
+    }
+  }
+  .search{
+    display: flex;
+    width: calc(100% - 1.5rem);
+    //border: 1px solid red;
+    border-radius: .1rem;
+    margin-left: .1rem;
+    background-color: rgba(255, 255, 255, .5);
+    text-align: center;
+    input{
+      border: none;
+      outline: none;
+      width: calc(100% - .5rem);
+      height: .5rem;
+      line-height: .5rem;
+      background-color: transparent;
+      font-size: .25rem;
+      color: #fff;
+      &::-webkit-input-placeholder{
+        color: #fff;
+        font-size: .25rem;
+      }
+    }
+    .icon {
+      box-sizing: border-box;
+      padding: .1rem;
+      vertical-align: middle;
+    }
+    .slider{
+      height: .5rem;
+      line-height: .5rem;
+      font-size: .25rem;
+      .v-item{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+  }
+  .add{
+    .icon{
+      width: .4rem;
+      height: .4rem;
+    }
+  }
+}
+.am-popover{
+  top: .8rem !important;
+  width: 1.6rem;
+  .am-popover-inner-wrapper, .am-popover-arrow, .am-popover-inner{
+    background-color: rgba(99, 102, 97, 0.6);
+    color: #fff;
+  }
+  .am-popover-item{
+    height: 0.8rem;
+    .am-popover-item-content{
+      //border: 1px solid black;
+      font-size: .2rem;
+    }
+  }
+  .am-popover-item-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    //border: 1px solid red;
+    height: .8rem;
+  }
+  .icon{
+    width: .5rem;
+    height: .5rem;
+    //border: 1px solid red;
+    margin-top: -.15rem;
+  }
+}

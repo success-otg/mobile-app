@@ -1,5 +1,5 @@
 import React from 'react'
-import Foot from "../../components/foot"
+import Foot from "../../components/common/foot"
 import {Link} from 'react-router-dom'
 import './mine.scss'
 import ReactSVG from 'react-svg'

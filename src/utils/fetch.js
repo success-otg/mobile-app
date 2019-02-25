@@ -16,7 +16,10 @@ class FetchUtil {
   }
   //设置请求URL
   setUrl(url){
-    this.url = baseUrl + url;
+    if (url.indexOf('http') === -1) {
+      this.url = baseUrl + url;
+    }
+    this.url = url
     return this;
   }
   //设置请求方式，默认为GET请求（POST,PUT,DELETE）
