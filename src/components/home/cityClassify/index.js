@@ -23,9 +23,10 @@ class Classify extends React.Component{
       <div>
         <StickyContainer>
           <Tabs tabs={tabs} initialPage={0} renderTabBar={renderTabBar}>
-            <Internal history={this.props.history}/>
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '250px', backgroundColor: '#fff' }}>
+            <Internal history={this.props.history} cities={this.props.cities}/>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '250px', backgroundColor: '#fff', marginTop: '1.7rem' }}>
               Content of second tab
+              咋没有了呢
             </div>
           </Tabs>
         </StickyContainer>
